@@ -1,0 +1,48 @@
+---
+name: Publish charts
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  publish-chart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@1a275c3b69536ee54be43f2070a358922e12c8d4 # v4
+
+      - name: Lowercase repository owner
+        run: echo "REPO_OWNER=${GITHUB_REPOSITORY_OWNER@L}" >> "${GITHUB_ENV}"
+
+      - name: Login
+        run: >-
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{
+          env.REGISTRY }}/${{ env.REPO_OWNER }} --username ${{ github.actor }}
+          --password-stdin
+
+      - name: Package and push experimental channel chart
+        working-directory: ./charts/experimental-crds
+        run: |
+          helm dependency build
+          helm package .
+          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/charts/experimental-crds
+
+      - name: Package and push standard channel chart
+        working-directory: ./charts/standard-crds
+        run: |
+          helm dependency build
+          helm package .
+          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/charts/standard-crds

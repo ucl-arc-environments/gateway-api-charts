@@ -1,0 +1,15 @@
+.PHONY: *
+
+define fetch_crds
+	python crds.py -c $(1)
+endef
+
+experimental:
+	$(call fetch_crds,experimental)
+
+standard:
+	$(call fetch_crds,standard)
+
+all:
+	$(call fetch_crds,experimental)
+	$(call fetch_crds,standard)

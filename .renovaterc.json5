@@ -1,0 +1,33 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "schedule:monthly",
+    ":disableDependencyDashboard",
+    ":label(renovate)",
+  ],
+  "helmv3": {
+    enabled: false,
+  },
+  "helm-values": {
+    enabled: false,
+  },
+  "github-actions": {
+    enabled: false,
+  },
+  "mise": {
+    enabled: false,
+  },
+  customManagers: [
+    {
+      customType: "regex",
+      description: "Gateway API CRDs",
+      managerFilePatterns: [
+        "/(^|/)*/Chart.yaml$/",
+      ],
+      matchStrings: ["appVersion:\\s?\"(?<currentValue>.*?)\""],
+      depNameTemplate: "kubernetes-sigs/gateway-api",
+      datasourceTemplate: "github-releases",
+    },
+  ]
+}
