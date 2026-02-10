@@ -3705,30 +3705,34 @@ spec:
                       Support: Core'
                     properties:
                       clientCertificateRef:
-                        description: "ClientCertificateRef references an object that\
-                          \ contains a client certificate\nand its associated private\
-                          \ key. It can reference standard Kubernetes resources,\n\
-                          i.e., Secret, or implementation-specific custom resources.\n\
-                          \nA ClientCertificateRef is considered invalid if:\n\n*\
-                          \ It refers to a resource that cannot be resolved (e.g.,\
-                          \ the referenced resource\n  does not exist) or is misconfigured\
-                          \ (e.g., a Secret does not contain the keys\n  named `tls.crt`\
-                          \ and `tls.key`). In this case, the `ResolvedRefs` condition\n\
-                          \  on the Gateway MUST be set to False with the Reason `InvalidClientCertificateRef`\n\
-                          \  and the Message of the Condition MUST indicate why the\
-                          \ reference is invalid.\n\n* It refers to a resource in\
-                          \ another namespace UNLESS there is a ReferenceGrant\n \
-                          \ in the target namespace that allows the certificate to\
-                          \ be attached.\n  If a ReferenceGrant does not allow this\
-                          \ reference, the `ResolvedRefs` condition\n  on the Gateway\
-                          \ MUST be set to False with the Reason `RefNotPermitted`.\n\
-                          \nImplementations MAY choose to perform further validation\
-                          \ of the certificate\ncontent (e.g., checking expiry or\
-                          \ enforcing specific formats). In such cases,\nan implementation-specific\
-                          \ Reason and Message MUST be set.\n\nSupport: Core - Reference\
-                          \ to a Kubernetes TLS Secret (with the type `kubernetes.io/tls`).\n\
-                          Support: Implementation-specific - Other resource kinds\
-                          \ or Secrets with a\ndifferent type (e.g., `Opaque`)."
+                        description: 'ClientCertificateRef is a reference to an object
+                          that contains a Client
+
+                          Certificate and the associated private key.
+
+
+                          References to a resource in different namespace are invalid
+                          UNLESS there
+
+                          is a ReferenceGrant in the target namespace that allows
+                          the certificate
+
+                          to be attached. If a ReferenceGrant does not allow this
+                          reference, the
+
+                          "ResolvedRefs" condition MUST be set to False for this listener
+                          with the
+
+                          "RefNotPermitted" reason.
+
+
+                          ClientCertificateRef can reference to standard Kubernetes
+                          resources, i.e.
+
+                          Secret, or implementation-specific custom resources.
+
+
+                          Support: Core'
                         properties:
                           group:
                             default: ''
@@ -5685,30 +5689,34 @@ spec:
                       Support: Core'
                     properties:
                       clientCertificateRef:
-                        description: "ClientCertificateRef references an object that\
-                          \ contains a client certificate\nand its associated private\
-                          \ key. It can reference standard Kubernetes resources,\n\
-                          i.e., Secret, or implementation-specific custom resources.\n\
-                          \nA ClientCertificateRef is considered invalid if:\n\n*\
-                          \ It refers to a resource that cannot be resolved (e.g.,\
-                          \ the referenced resource\n  does not exist) or is misconfigured\
-                          \ (e.g., a Secret does not contain the keys\n  named `tls.crt`\
-                          \ and `tls.key`). In this case, the `ResolvedRefs` condition\n\
-                          \  on the Gateway MUST be set to False with the Reason `InvalidClientCertificateRef`\n\
-                          \  and the Message of the Condition MUST indicate why the\
-                          \ reference is invalid.\n\n* It refers to a resource in\
-                          \ another namespace UNLESS there is a ReferenceGrant\n \
-                          \ in the target namespace that allows the certificate to\
-                          \ be attached.\n  If a ReferenceGrant does not allow this\
-                          \ reference, the `ResolvedRefs` condition\n  on the Gateway\
-                          \ MUST be set to False with the Reason `RefNotPermitted`.\n\
-                          \nImplementations MAY choose to perform further validation\
-                          \ of the certificate\ncontent (e.g., checking expiry or\
-                          \ enforcing specific formats). In such cases,\nan implementation-specific\
-                          \ Reason and Message MUST be set.\n\nSupport: Core - Reference\
-                          \ to a Kubernetes TLS Secret (with the type `kubernetes.io/tls`).\n\
-                          Support: Implementation-specific - Other resource kinds\
-                          \ or Secrets with a\ndifferent type (e.g., `Opaque`)."
+                        description: 'ClientCertificateRef is a reference to an object
+                          that contains a Client
+
+                          Certificate and the associated private key.
+
+
+                          References to a resource in different namespace are invalid
+                          UNLESS there
+
+                          is a ReferenceGrant in the target namespace that allows
+                          the certificate
+
+                          to be attached. If a ReferenceGrant does not allow this
+                          reference, the
+
+                          "ResolvedRefs" condition MUST be set to False for this listener
+                          with the
+
+                          "RefNotPermitted" reason.
+
+
+                          ClientCertificateRef can reference to standard Kubernetes
+                          resources, i.e.
+
+                          Secret, or implementation-specific custom resources.
+
+
+                          Support: Core'
                         properties:
                           group:
                             default: ''
@@ -7299,17 +7307,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -7375,17 +7376,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -7676,17 +7670,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -7752,17 +7739,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -8118,17 +8098,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -8190,17 +8163,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -8486,17 +8452,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -8558,17 +8517,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -10815,7 +10767,6 @@ spec:
                                             must be sent.'
                                           items:
                                             type: string
-                                          maxItems: 64
                                           type: array
                                           x-kubernetes-list-type: set
                                       type: object
@@ -10886,7 +10837,6 @@ spec:
                                             of bytes forwarded.'
                                           items:
                                             type: string
-                                          maxItems: 64
                                           type: array
                                           x-kubernetes-list-type: set
                                         allowedResponseHeaders:
@@ -10903,7 +10853,6 @@ spec:
                                             except Authority or Host must be copied.'
                                           items:
                                             type: string
-                                          maxItems: 64
                                           type: array
                                           x-kubernetes-list-type: set
                                         path:
@@ -11040,17 +10989,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -11116,17 +11058,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -11590,9 +11525,6 @@ spec:
                                       enum:
                                       - 301
                                       - 302
-                                      - 303
-                                      - 307
-                                      - 308
                                       type: integer
                                   type: object
                                 responseHeaderModifier:
@@ -11644,17 +11576,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -11720,17 +11645,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -12866,7 +12784,6 @@ spec:
                                       must be sent.'
                                     items:
                                       type: string
-                                    maxItems: 64
                                     type: array
                                     x-kubernetes-list-type: set
                                 type: object
@@ -12935,7 +12852,6 @@ spec:
                                       bytes forwarded.'
                                     items:
                                       type: string
-                                    maxItems: 64
                                     type: array
                                     x-kubernetes-list-type: set
                                   allowedResponseHeaders:
@@ -12951,7 +12867,6 @@ spec:
                                       except Authority or Host must be copied.'
                                     items:
                                       type: string
-                                    maxItems: 64
                                     type: array
                                     x-kubernetes-list-type: set
                                   path:
@@ -13079,17 +12994,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -13151,17 +13059,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -13617,9 +13518,6 @@ spec:
                                 enum:
                                 - 301
                                 - 302
-                                - 303
-                                - 307
-                                - 308
                                 type: integer
                             type: object
                           responseHeaderModifier:
@@ -13668,17 +13566,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -13740,17 +13631,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -14126,17 +14010,10 @@ spec:
                                   - RegularExpression
                                   type: string
                                 value:
-                                  description: 'Value is the value of HTTP Header
-                                    to be matched.
-
-
-                                    Must consist of printable US-ASCII characters,
-                                    optionally separated
-
-                                    by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
+                                  description: Value is the value of HTTP Header to
+                                    be matched.
                                   maxLength: 4096
                                   minLength: 1
-                                  pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                   type: string
                               required:
                               - name
@@ -16635,7 +16512,6 @@ spec:
                                             must be sent.'
                                           items:
                                             type: string
-                                          maxItems: 64
                                           type: array
                                           x-kubernetes-list-type: set
                                       type: object
@@ -16706,7 +16582,6 @@ spec:
                                             of bytes forwarded.'
                                           items:
                                             type: string
-                                          maxItems: 64
                                           type: array
                                           x-kubernetes-list-type: set
                                         allowedResponseHeaders:
@@ -16723,7 +16598,6 @@ spec:
                                             except Authority or Host must be copied.'
                                           items:
                                             type: string
-                                          maxItems: 64
                                           type: array
                                           x-kubernetes-list-type: set
                                         path:
@@ -16860,17 +16734,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -16936,17 +16803,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -17410,9 +17270,6 @@ spec:
                                       enum:
                                       - 301
                                       - 302
-                                      - 303
-                                      - 307
-                                      - 308
                                       type: integer
                                   type: object
                                 responseHeaderModifier:
@@ -17464,17 +17321,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -17540,17 +17390,10 @@ spec:
                                             pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                             type: string
                                           value:
-                                            description: 'Value is the value of HTTP
+                                            description: Value is the value of HTTP
                                               Header to be matched.
-
-
-                                              Must consist of printable US-ASCII characters,
-                                              optionally separated
-
-                                              by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                             maxLength: 4096
                                             minLength: 1
-                                            pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                             type: string
                                         required:
                                         - name
@@ -18686,7 +18529,6 @@ spec:
                                       must be sent.'
                                     items:
                                       type: string
-                                    maxItems: 64
                                     type: array
                                     x-kubernetes-list-type: set
                                 type: object
@@ -18755,7 +18597,6 @@ spec:
                                       bytes forwarded.'
                                     items:
                                       type: string
-                                    maxItems: 64
                                     type: array
                                     x-kubernetes-list-type: set
                                   allowedResponseHeaders:
@@ -18771,7 +18612,6 @@ spec:
                                       except Authority or Host must be copied.'
                                     items:
                                       type: string
-                                    maxItems: 64
                                     type: array
                                     x-kubernetes-list-type: set
                                   path:
@@ -18899,17 +18739,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -18971,17 +18804,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -19437,9 +19263,6 @@ spec:
                                 enum:
                                 - 301
                                 - 302
-                                - 303
-                                - 307
-                                - 308
                                 type: integer
                             type: object
                           responseHeaderModifier:
@@ -19488,17 +19311,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -19560,17 +19376,10 @@ spec:
                                       pattern: ^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$
                                       type: string
                                     value:
-                                      description: 'Value is the value of HTTP Header
+                                      description: Value is the value of HTTP Header
                                         to be matched.
-
-
-                                        Must consist of printable US-ASCII characters,
-                                        optionally separated
-
-                                        by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
                                       maxLength: 4096
                                       minLength: 1
-                                      pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                       type: string
                                   required:
                                   - name
@@ -19946,17 +19755,10 @@ spec:
                                   - RegularExpression
                                   type: string
                                 value:
-                                  description: 'Value is the value of HTTP Header
-                                    to be matched.
-
-
-                                    Must consist of printable US-ASCII characters,
-                                    optionally separated
-
-                                    by single tabs or spaces. See: https://tools.ietf.org/html/rfc7230#section-3.2'
+                                  description: Value is the value of HTTP Header to
+                                    be matched.
                                   maxLength: 4096
                                   minLength: 1
-                                  pattern: ^[!-~]+([\t ]?[!-~]+)*$
                                   type: string
                               required:
                               - name
