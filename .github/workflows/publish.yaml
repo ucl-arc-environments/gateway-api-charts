@@ -35,11 +35,11 @@ jobs:
         run: |
           helm dependency build
           helm package .
-          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts/experimental-crds
+          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts
 
       - name: Package and push standard channel chart
         working-directory: ./charts/standard-crds
         run: |
           helm dependency build
           helm package .
-          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts/standard-crds
+          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts
