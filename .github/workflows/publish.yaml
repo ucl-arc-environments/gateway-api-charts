@@ -24,13 +24,10 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@1a275c3b69536ee54be43f2070a358922e12c8d4 # v4
 
-      - name: Lowercase repository owner
-        run: echo "REPO_OWNER=${GITHUB_REPOSITORY_OWNER@L}" >> "${GITHUB_ENV}"
-
       - name: Login
         run: >-
           echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{
-          env.REGISTRY }}/${{ env.REPO_OWNER }} --username ${{ github.actor }}
+          env.REGISTRY }}/${{ github.repository_owner }} --username ${{ github.actor }}
           --password-stdin
 
       - name: Package and push experimental channel chart
