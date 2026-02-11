@@ -27,7 +27,7 @@ jobs:
       - name: Login
         run: >-
           echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{
-          env.REGISTRY }}/${{ github.repository_owner }} --username ${{ github.actor }}
+          env.REGISTRY }} --username ${{ github.actor }}
           --password-stdin
 
       - name: Package and push experimental channel chart
@@ -35,11 +35,11 @@ jobs:
         run: |
           helm dependency build
           helm package .
-          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/charts/experimental-crds
+          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts/experimental-crds
 
       - name: Package and push standard channel chart
         working-directory: ./charts/standard-crds
         run: |
           helm dependency build
           helm package .
-          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/charts/standard-crds
+          helm push ./*.tgz oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts/standard-crds
