@@ -14,7 +14,7 @@ helm install gateway-api-crds oci://ghcr.io/ucl-arc-environments/charts/standard
 To install the experimental channel CRDs:
 
 ```shell
-helm install gateway-api-crds oci://ghcr.io/ucl-arc-environments/charts/experimentatl-gateway-api-crds
+helm install gateway-api-crds oci://ghcr.io/ucl-arc-environments/charts/experimental-gateway-api-crds
 ```
 
 > [!CAUTION]
