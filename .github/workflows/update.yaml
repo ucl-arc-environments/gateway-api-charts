@@ -1,0 +1,43 @@
+---
+name: Update CRDs
+
+on:
+  pull_request:
+    branches:
+      - main
+      - renovate/**
+
+permissions:
+  contents: write
+
+jobs:
+  update-crds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install pyyaml requests
+
+      - name: Update CRDs
+        working-directory: ./scripts
+        run: |-
+          make experimental
+          make standard
+
+      - name: Commit and push changes
+        run: |-
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add charts/experimental-crds/crds/*.yaml charts/standard-crds/crds/*.yaml
+          git commit -m "Update CRDs" || echo "No changes to commit"
+          git push origin ${{ github.head_ref }}
