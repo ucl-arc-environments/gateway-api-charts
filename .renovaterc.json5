@@ -21,11 +21,21 @@
   customManagers: [
     {
       customType: "regex",
-      description: "Gateway API CRDs",
+      description: "Helm Chart Gateway API CRDs version",
       managerFilePatterns: [
         "/(^|/)*/Chart.yaml$/",
       ],
       matchStrings: ["appVersion:\\s?\"(?<currentValue>.*?)\""],
+      depNameTemplate: "kubernetes-sigs/gateway-api",
+      datasourceTemplate: "github-releases",
+    },
+    {
+      customType: "regex",
+      description: "Makefile Gateway API CRDs version",
+      managerFilePatterns: [
+        "/(^|/)*scripts/Makefile$/",
+      ],
+      matchStrings: ["GATEWAY_API_VERSION\\s?=\\s?\"(?<currentValue>.*?)\""],
       depNameTemplate: "kubernetes-sigs/gateway-api",
       datasourceTemplate: "github-releases",
     },

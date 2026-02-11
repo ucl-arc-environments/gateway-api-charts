@@ -1,7 +1,9 @@
 .PHONY: *
 
+GATEWAY_API_VERSION = "v1.4.1"
+
 define fetch_crds
-	python crds.py -c $(1)
+	python crds.py -c $(1) -v $(GATEWAY_API_VERSION)
 endef
 
 experimental:
