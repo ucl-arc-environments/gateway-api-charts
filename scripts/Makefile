@@ -1,6 +1,6 @@
 .PHONY: *
 
-GATEWAY_API_VERSION = "v1.5.1"
+GATEWAY_API_VERSION = "v1.6.0"
 
 define fetch_crds
 	python crds.py -c $(1) -v $(GATEWAY_API_VERSION)
